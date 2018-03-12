@@ -1,3 +1,5 @@
+require 'colorize'
+
 def get_random_word()
 	dictionary = File.readlines("5desk.txt")
 	word = ""
@@ -8,5 +10,123 @@ def get_random_word()
 	end
 	return word
 end
-1000.times{puts get_random_word()}
+
+def draw_stickman(stage)
+	case stage
+	when 1
+			puts %q{
+   ____
+  |    |
+  |    
+  |   
+  |    
+  |   
+ _|_
+|   |______
+|          |
+|__________|
+}
+	when 2
+		puts %q{
+   ____
+  |    |
+  |    o
+  |   
+  |    
+  |   
+ _|_
+|   |______
+|          |
+|__________|
+}
+	when 3
+		puts %q{
+   ____
+  |    |
+  |    o
+  |    |
+  |    
+  |   
+ _|_
+|   |______
+|          |
+|__________|
+}
+	when 4
+		puts %q{
+   ____
+  |    |
+  |    o
+  |    |
+  |    |
+  |   
+ _|_
+|   |______
+|          |
+|__________|
+}
+	when 5
+		puts %q{
+   ____
+  |    |
+  |    o
+  |   /|
+  |    |
+  |   
+ _|_
+|   |______
+|          |
+|__________|
+}
+	when 6
+		puts %q{
+   ____
+  |    |
+  |    o
+  |   /|\
+  |    |
+  |   
+ _|_
+|   |______
+|          |
+|__________|
+}
+	when 7
+		puts %q{
+   ____
+  |    |
+  |    o
+  |   /|\
+  |    |
+  |   /
+ _|_
+|   |______
+|          |
+|__________|
+}
+	when 8
+puts %q{
+   ____
+  |    |
+  |    o
+  |   /|\
+  |    |
+  |   / \
+ _|_
+|   |______
+|          |
+|__________|
+}
+	end
+end
+
+word = get_random_word
+stage = 1
+
+until(stage == 9)
+	draw_stickman(stage)
+	stage += 1
+end
+
+
 
