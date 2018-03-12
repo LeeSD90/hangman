@@ -1,16 +1,5 @@
 require 'colorize'
 
-def get_random_word()
-	dictionary = File.readlines("5desk.txt")
-	word = ""
-
-	until(word.length > 5 && word.length < 12)
-		random_line = rand(0..dictionary.size)
-		word = dictionary[random_line]
-	end
-	return word
-end
-
 def draw_stickman(stage)
 	case stage
 	when 1
@@ -120,17 +109,30 @@ puts %q{
 	end
 end
 
-#todo only increment stage on unsuccessful guess
-def draw_score(stage)
+def get_random_word()
+	dictionary = File.readlines("5desk.txt")
+	word = ""
+
+	until(word.length > 5 && word.length < 12)
+		random_line = rand(0..dictionary.size)
+		word = dictionary[random_line]
+	end
+	return word
+end
+
+def score(stage)
+	count = 0
 	puts "\n"
 	@word.split("").each { |l|
-		if @chosen_letters.include?(l.downcase) then print l + " "
+		if @chosen_letters.include?(l.downcase) then count += 1; print l + " "
 		else print "_ "
 		end
-	} 
+	}
+	if @word.split("").length == count then puts "\nYou won!"; return true; end
 	puts "\n\n"
 	puts "So far you have guessed - " + @chosen_letters.to_s.colorize(:green)
 	puts "You have "+(8-stage).to_s+" guesses remaining!\n"
+	return false
 end
 
 def check_input(input)
@@ -141,12 +143,15 @@ def is_letter(l)
 	return l =~ /^[a-zA-Z]{1}$/
 end
 
+
+
 @word = get_random_word.gsub("\n", '')
 @chosen_letters = []
 stage = 1
-draw_score(stage)
+score(stage)
+won = false
 
-until(stage == 8)
+until(stage == 8 || won)
 	puts @word #todo remove
 	input = ""
 
@@ -160,7 +165,7 @@ until(stage == 8)
 	
 	@chosen_letters.push(input)
 	draw_stickman(stage)
-	draw_score(stage)
+	won = score(stage)
 	
 end
 
