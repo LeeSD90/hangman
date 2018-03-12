@@ -120,12 +120,11 @@ puts %q{
 	end
 end
 
-#todo error check userinput -> chars only & not already guessed
 #todo only increment stage on unsuccessful guess
 def draw_score(stage)
 	puts "\n"
 	@word.split("").each { |l|
-		if @chosen_letters.include?(l) then print l + " "
+		if @chosen_letters.include?(l.downcase) then print l + " "
 		else print "_ "
 		end
 	} 
@@ -150,14 +149,19 @@ draw_score(stage)
 until(stage == 8)
 	puts @word #todo remove
 	input = ""
+
 	until (check_input(input))
-		puts "Please guess a character a-z"
-		input = gets.chomp
+		puts "Please guess a character a-z which you haven't already tried"
+		input = gets.chomp.downcase
 	end
+	system "cls"
+
+	stage += 1 unless @word.downcase.include?input
+	
 	@chosen_letters.push(input)
 	draw_stickman(stage)
 	draw_score(stage)
-	stage += 1
+	
 end
 
 
