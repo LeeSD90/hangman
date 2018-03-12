@@ -134,14 +134,27 @@ def draw_score(stage)
 	puts "You have "+(8-stage).to_s+" guesses remaining!\n"
 end
 
+def check_input(input)
+	return is_letter(input) && !@chosen_letters.include?(input)
+end
+
+def is_letter(l)
+	return l =~ /^[a-zA-Z]{1}$/
+end
+
 @word = get_random_word.gsub("\n", '')
 @chosen_letters = []
 stage = 1
+draw_score(stage)
 
 until(stage == 8)
 	puts @word #todo remove
-	guess = gets.chomp
-	@chosen_letters.push(guess)
+	input = ""
+	until (check_input(input))
+		puts "Please guess a character a-z"
+		input = gets.chomp
+	end
+	@chosen_letters.push(input)
 	draw_stickman(stage)
 	draw_score(stage)
 	stage += 1
