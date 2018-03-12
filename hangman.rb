@@ -25,7 +25,7 @@ def draw_stickman(stage)
 |   |______
 |          |
 |__________|
-}
+}.colorize(:green)
 	when 2
 		puts %q{
    ____
@@ -38,7 +38,7 @@ def draw_stickman(stage)
 |   |______
 |          |
 |__________|
-}
+}.colorize(:green)
 	when 3
 		puts %q{
    ____
@@ -51,7 +51,7 @@ def draw_stickman(stage)
 |   |______
 |          |
 |__________|
-}
+}.colorize(:green)
 	when 4
 		puts %q{
    ____
@@ -64,7 +64,7 @@ def draw_stickman(stage)
 |   |______
 |          |
 |__________|
-}
+}.colorize(:green)
 	when 5
 		puts %q{
    ____
@@ -77,7 +77,7 @@ def draw_stickman(stage)
 |   |______
 |          |
 |__________|
-}
+}.colorize(:green)
 	when 6
 		puts %q{
    ____
@@ -90,7 +90,7 @@ def draw_stickman(stage)
 |   |______
 |          |
 |__________|
-}
+}.colorize(:green)
 	when 7
 		puts %q{
    ____
@@ -103,7 +103,7 @@ def draw_stickman(stage)
 |   |______
 |          |
 |__________|
-}
+}.colorize(:green)
 	when 8
 puts %q{
    ____
@@ -116,7 +116,7 @@ puts %q{
 |   |______
 |          |
 |__________|
-}
+}.colorize(:red)
 	end
 end
 
